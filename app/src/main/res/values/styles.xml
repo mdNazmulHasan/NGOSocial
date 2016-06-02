@@ -1,0 +1,39 @@
+<resources>
+
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
+
+    </style>
+
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MaterialSearchViewStyle">
+        <!-- Background for the search bar -->
+        <item name="searchBackground">@color/colorPrimary</item>
+
+        <!-- Change clear text icon -->
+        <item name="searchCloseIcon">@drawable/ic_action_navigation_close_inverted</item>
+
+        <!-- Change up icon -->
+        <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back_inverted</item>
+
+        <!-- Change icon for the suggestions -->
+        <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>
+
+        <!-- Change background for the suggestions list view -->
+        <item name="searchSuggestionBackground">@android:color/white</item>
+
+        <!-- Change text color for edit text. This will also be the color of the cursor -->
+        <item name="android:textColor">@color/textColorPrimary</item>
+
+
+        <!-- Hint for edit text -->
+        <item name="android:hint">@string/search_hint</item>
+    </style>
+
+</resources>
