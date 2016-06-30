@@ -1,23 +1,23 @@
-package com.nerdcastle.nazmul.iiddemo;
+package com.nerdcastle.nazmul.iiddemo.activity;
 
 import android.app.SearchManager;
-import android.content.Context;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.nerdcastle.nazmul.iiddemo.HomeFragment;
+import com.nerdcastle.nazmul.iiddemo.NotificationFragment;
+import com.nerdcastle.nazmul.iiddemo.R;
+import com.nerdcastle.nazmul.iiddemo.RequestFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    MaterialSearchView searchView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,13 +92,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public void onBackPressed() {
-        if (searchView.isSearchOpen()) {
-            searchView.closeSearch();
-        } else {
-            super.onBackPressed();
-        }
-    }
+
 
 }
