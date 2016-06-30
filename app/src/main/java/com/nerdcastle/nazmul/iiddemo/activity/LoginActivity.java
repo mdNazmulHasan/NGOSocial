@@ -1,5 +1,6 @@
 package com.nerdcastle.nazmul.iiddemo.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
                 TokenResponse tokenResponse=response.body();
                 Log.d("Login", "onResponse: "+statusCode);
                 Log.d("login", "onResponse: "+response.body().toString());
+                Intent loginIntent=new Intent(LoginActivity.this,HomeActivity.class);
+                startActivity(loginIntent);
             }
 
             @Override
