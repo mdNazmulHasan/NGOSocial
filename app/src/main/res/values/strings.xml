@@ -27,4 +27,5 @@
     <string name="hint_enter_username">Enter your Username</string>
     <string name="hint_enter_password">Enter password</string>
     <string name="image_view_logo_image">Logo Image</string>
+    <string name="nerd_castle">Nerd Castle</string>
 </resources>
