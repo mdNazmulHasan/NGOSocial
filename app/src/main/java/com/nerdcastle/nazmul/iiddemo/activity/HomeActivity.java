@@ -14,10 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 
-import com.nerdcastle.nazmul.iiddemo.HomeFragment;
-import com.nerdcastle.nazmul.iiddemo.NotificationFragment;
+import com.nerdcastle.nazmul.iiddemo.fragments.HomeFragment;
+import com.nerdcastle.nazmul.iiddemo.fragments.NotificationFragment;
 import com.nerdcastle.nazmul.iiddemo.R;
-import com.nerdcastle.nazmul.iiddemo.RequestFragment;
+import com.nerdcastle.nazmul.iiddemo.fragments.RequestFragment;
 
 import java.util.ArrayList;
 import java.util.List;
