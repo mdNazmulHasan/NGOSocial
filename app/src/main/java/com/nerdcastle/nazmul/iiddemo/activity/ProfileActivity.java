@@ -1,8 +1,17 @@
 package com.nerdcastle.nazmul.iiddemo.activity;
 
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Paint;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nerdcastle.nazmul.iiddemo.Interfaces.ActivitiesApi;
@@ -26,6 +35,9 @@ public class ProfileActivity extends AppCompatActivity {
     OrganizationApi organizationApi;
     String organizationId=String.valueOf(1);
     String token="30-06-2016-1-4";
+    ImageView profilePhotoView;
+    TextView profileNameText;
+    LinearLayout basicInfoHeader;
 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +45,13 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         networkingLibraryInitilizer();
         getData();
+        viewInitializer();
+    }
+
+    private void viewInitializer() {
+        profilePhotoView= (ImageView) findViewById(R.id.profilePhoto);
+        profileNameText= (TextView) findViewById(R.id.profileNameText);
+        basicInfoHeader= (LinearLayout) findViewById(R.id.basicInfoHeader);
     }
 
     private void getData() {
@@ -42,9 +61,18 @@ public class ProfileActivity extends AppCompatActivity {
 
         Call<OrganizationProfileResponse>organizationProfileResponseCall=organizationApi.getOrganizationResponseCall(data);
         organizationProfileResponseCall.enqueue(new Callback<OrganizationProfileResponse>() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onResponse(Call<OrganizationProfileResponse> call, Response<OrganizationProfileResponse> response) {
                 Log.e("success", "onResponse: "+response.body());
+                OrganizationProfileResponse organizationProfileResponse=response.body();
+                String stringPicture=organizationProfileResponse.getProfilePhoto();
+                byte[] decodedString = Base64.decode(stringPicture, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                profilePhotoView.setImageBitmap(decodedByte);
+                profileNameText.setText(organizationProfileResponse.getName());
+                Log.e("name", "onResponse: "+organizationProfileResponse.getName() );
+
             }
 
             @Override
