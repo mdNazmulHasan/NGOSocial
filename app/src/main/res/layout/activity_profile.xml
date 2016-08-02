@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
@@ -38,17 +39,22 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
+
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:id="@+id/infoLoaderLayout"
             android:layout_height="match_parent">
+
             <ImageView
                 android:id="@+id/profilePhoto"
                 android:src="@drawable/loading"
@@ -89,9 +95,44 @@
                     android:layout_marginLeft="10dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="ABOUT"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:text="INFO"
+                    android:id="@+id/aboutText"
+                    android:gravity="bottom"
+                    android:layout_weight="3"
+                    android:layout_marginRight="10dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
 
 
     </android.support.v4.widget.NestedScrollView>
+    <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+        android:id="@+id/circularFillableLoaders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/filler"
+        app:cfl_border="true"
+        android:layout_gravity="center"
+        app:cfl_border_width="12dp"
+        app:cfl_progress="100"
+        app:cfl_wave_amplitude="0.06"
+        app:cfl_wave_color="#556cef" />
+
 
 </android.support.design.widget.CoordinatorLayout>
