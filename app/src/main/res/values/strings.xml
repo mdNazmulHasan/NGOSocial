@@ -30,4 +30,11 @@
     <string name="nerd_castle">Nerd Castle</string>
     <string name="status">what\'s your status...</string>
     <string name="profile_name">profile name</string>
+    <string name="basic_info">BASIC INFO</string>
+    <string name="edit">EDIT</string>
+    <string name="about">ABOUT</string>
+    <string name="info">INFO</string>
+    <string name="established">ESTABLISHED</string>
+    <string name="date">date</string>
+    <string name="email">EMAIL</string>
 </resources>

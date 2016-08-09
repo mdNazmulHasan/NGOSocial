@@ -24,10 +24,15 @@ import com.nerdcastle.nazmul.iiddemo.R;
 import com.nerdcastle.nazmul.iiddemo.Utils.Constants;
 import com.nerdcastle.nazmul.iiddemo.models.OrganizationProfileResponse;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,10 +48,13 @@ public class ProfileActivity extends AppCompatActivity {
     ImageView expandedImage;
     TextView profileNameText;
     TextView aboutText;
+    TextView emailText;
+    TextView establishedDateText;
     LinearLayout basicInfoHeader;
     LinearLayout infoLoader;
     CircularFillableLoaders circularFillableLoaders;
     private Handler handler;
+    String convertedDate;
     int progress=100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +105,10 @@ public class ProfileActivity extends AppCompatActivity {
     private void viewInitializer() {
         profilePhotoView= (ImageView) findViewById(R.id.profilePhoto);
         profileNameText= (TextView) findViewById(R.id.profileNameText);
+        establishedDateText= (TextView) findViewById(R.id.establishedDateText);
         basicInfoHeader= (LinearLayout) findViewById(R.id.basicInfoHeader);
         aboutText= (TextView) findViewById(R.id.aboutText);
+        emailText= (TextView) findViewById(R.id.emailText);
         expandedImage= (ImageView) findViewById(R.id.expandedImage);
         infoLoader= (LinearLayout) findViewById(R.id.infoLoaderLayout);
         circularFillableLoaders = (CircularFillableLoaders)findViewById(R.id.circularFillableLoaders);
@@ -112,6 +122,16 @@ public class ProfileActivity extends AppCompatActivity {
         circularFillableLoaders.setVisibility(View.GONE);
         expandedImage.setVisibility(View.VISIBLE);
         infoLoader.setVisibility(View.VISIBLE);
+    }
+    private void dateConverter(String dateTime){
+        try {
+            DateFormat f = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+            Date d = f.parse(dateTime);
+            DateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+            convertedDate=""+date.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private void getData() {
@@ -132,6 +152,9 @@ public class ProfileActivity extends AppCompatActivity {
                 profilePhotoView.setImageBitmap(decodedByte);
                 profileNameText.setText(organizationProfileResponse.getName());
                 aboutText.setText(organizationProfileResponse.getAbout());
+                dateConverter(organizationProfileResponse.getEstablishedDate());
+                establishedDateText.setText(convertedDate);
+                emailText.setText(organizationProfileResponse.getEmail());
                 Log.e("name", "onResponse: "+organizationProfileResponse.getName() );
 
             }
